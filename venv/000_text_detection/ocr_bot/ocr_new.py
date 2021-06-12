@@ -76,4 +76,3 @@ def query_handler(call):
     bot.send_message(call.message.chat.id, answer)
 
 bot.polling(none_stop=True)
-
