@@ -14,13 +14,13 @@ bot = telebot.TeleBot(config_OCR.TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    answer = 'Сначала загрузи фото, а потом нажми на кнопку'
+    answer = 'Сначала загрузи фото, а потом нажми на кнопку слева'
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     recognize = types.KeyboardButton("Распознаем")
     help  = types.KeyboardButton("Помощь")
     markup.add(recognize, help)
 
-    bot.send_message(message.chat.id, answer)
+    bot.send_message(message.chat.id, answer.format(message.from_user, bot.get_me()), reply_markup=markup)
 
 
 @bot.message_handler(content_types=['photo'])
